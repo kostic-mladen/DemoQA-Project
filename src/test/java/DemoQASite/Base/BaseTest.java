@@ -17,7 +17,7 @@ import java.util.List;
 
 public class BaseTest {
 
-    public static WebDriver driver;
+    public WebDriver driver;
     public WebDriverWait wait;
     public ExcelReader excelReader;
 

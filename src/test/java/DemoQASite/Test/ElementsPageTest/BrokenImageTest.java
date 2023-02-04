@@ -1,8 +1,9 @@
-package DemoQASite.Test.ElemenetsPageTest;
+package DemoQASite.Test.ElementsPageTest;
 
 import DemoQASite.Base.BaseTest;
 import DemoQASite.Page.ElemnetsPages.BrokenImagePage;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -15,65 +16,68 @@ public class BrokenImageTest extends BaseTest {
 
     @BeforeMethod
     public void brokenImagePageSetUp() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(brokenImageUrl);
-        brokenImagePage = new BrokenImagePage();
+        brokenImagePage = new BrokenImagePage(driver);
     }
 
 
-    @Test
+    @Test(priority = 10)
     public void verifyThatLogoOnBrokenImagePageIsPresent() {
         Assert.assertTrue(isDisplayed(brokenImagePage.logoBrokenImagePage));
         Assert.assertEquals(driver.getCurrentUrl(), brokenImageUrl);
     }
 
-    @Test
+    @Test(priority = 20)
     public void verifyThatTitleOnBrokenImagePageIsValid() {
         String expectedText = "Broken Links - Images";
         Assert.assertEquals(brokenImagePage.BrokenImageTitle.getText(), expectedText);
         Assert.assertEquals(driver.getCurrentUrl(), brokenImageUrl);
     }
 
-    @Test
+    @Test(priority = 30)
     public void verifyThatValidImageTextIsPresent() {
         Assert.assertTrue(isDisplayed(brokenImagePage.validImageText));
         String expectedText = "Valid image";
         Assert.assertEquals(brokenImagePage.validImageText.getText(), expectedText);
     }
 
-    @Test
+    @Test(priority = 40)
     public void verifyThatValidImageIsVisible() {
         Assert.assertTrue(isDisplayed(brokenImagePage.validImage));
     }
 
-    @Test
+    @Test(priority = 50)
     public void verifyThatBrokenImageTextIsPresent() {
         String expectedText = "Broken image";
         Assert.assertEquals(brokenImagePage.brokenImageText.getText(), expectedText);
     }
 
-    @Test
+    @Test(priority = 60)
     public void verifyThatValidLinkTextIsPresent() {
         String expectedText = "Valid Link";
         Assert.assertEquals(brokenImagePage.validLinkText.getText(), expectedText);
     }
 
-    @Test
+    @Test(priority = 70)
     public void verifyThatUserCanClickOnValidLink() {
         scrollToElement(brokenImagePage.clickOnValidLink);
         brokenImagePage.validLinkClick();
         Assert.assertEquals(driver.getCurrentUrl(), homeUrl);
     }
 
-    @Test
+    @Test(priority = 80)
     public void verifyThatBrokenLinkTextIsPresent() {
         String expectedText = "Broken Link";
         Assert.assertEquals(brokenImagePage.brokenLinkText.getText(), expectedText);
     }
 
-    @Test
+    @Test(priority = 90)
     public void verifyThatUserCanClickOnBrokenLink(){
         scrollToElement(brokenImagePage.clickOnBrokenLink);
         brokenImagePage.brokenLinkClick();

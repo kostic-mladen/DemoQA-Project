@@ -1,9 +1,10 @@
-package DemoQASite.Test.ElemenetsPageTest;
+package DemoQASite.Test.ElementsPageTest;
 
 import DemoQASite.Base.BaseTest;
 
 import DemoQASite.Page.ElemnetsPages.LinksPage;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -18,11 +19,14 @@ public class LinksTest extends BaseTest {
 
     @BeforeMethod
     public void linksPageSetUp() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+       // driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(linksUrl);
-        linksPage = new LinksPage();
+        linksPage = new LinksPage(driver);
     }
 
     @Test
@@ -88,16 +92,21 @@ public class LinksTest extends BaseTest {
     @Test(priority = 70)
     public void verifyThatCreatedButtonIsClickable() {
         waitForVisibility(linksPage.created);
+        scrollToElement(linksPage.created);
         linksPage.clickOnCreated();
         String expectedText = "Link has responded with staus 201 and status text Created";
+        waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
     }
 
     @Test(priority = 80)
     public void verifyThatNoContentButtonIsClickable() {
+        waitForVisibility(linksPage.noContent);
+        scrollToElement(linksPage.noContent);
         linksPage.clickOnNoContent();
         String expectedText = "Link has responded with staus 204 and status text No Content";
+        waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
     }
@@ -107,6 +116,7 @@ public class LinksTest extends BaseTest {
         scrollToElement(linksPage.moved);
         linksPage.clickOnMoved();
         String expectedText = "Link has responded with staus 301 and status text Moved Permanently";
+        waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
     }
@@ -116,6 +126,7 @@ public class LinksTest extends BaseTest {
         scrollToElement(linksPage.badRequest);
         linksPage.clickOnBadRequest();
         String expectedText = "Link has responded with staus 400 and status text Bad Request";
+        waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
     }
@@ -126,15 +137,18 @@ public class LinksTest extends BaseTest {
         scrollToElement(linksPage.unauthorized);
         linksPage.clickOnUnAuthorize();
         String expectedText = "Link has responded with staus 401 and status text Unauthorized";
+        waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
     }
 
     @Test(priority = 120)
     public void verifyThatForbiddenButtonIsClickable() {
+        waitForVisibility(linksPage.forbidden);
         scrollToElement(linksPage.forbidden);
         linksPage.clickOnForbidden();
         String expectedText = "Link has responded with staus 403 and status text Forbidden";
+        waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
     }
@@ -145,6 +159,7 @@ public class LinksTest extends BaseTest {
         scrollToElement(linksPage.invalidUrl);
         linksPage.clickOnInvalidUrl();
         String expectedText = "Link has responded with staus 404 and status text Not Found";
+        waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
     }

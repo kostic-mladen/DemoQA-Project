@@ -1,8 +1,9 @@
-package DemoQASite.Test.ElemenetsPageTest;
+package DemoQASite.Test.ElementsPageTest;
 
 import DemoQASite.Base.BaseTest;
 import DemoQASite.Page.ElemnetsPages.UploadAndDownloadPage;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -15,28 +16,31 @@ public class UploadAndDownloadTest extends BaseTest {
 
     @BeforeMethod
     public void uploadPageSetUp() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(uploadAndDownloadUrl);
-        uploadAndDownloadPage = new UploadAndDownloadPage();
+        uploadAndDownloadPage = new UploadAndDownloadPage(driver);
     }
 
-    @Test
+    @Test(priority = 10)
     public void verifyThatLeftPanelOnUploadPageIsVisible() {
         Assert.assertTrue(isDisplayed(uploadAndDownloadPage.leftPanel));
         uploadAndDownloadPage.checkVisibleElements();
         Assert.assertEquals(driver.getCurrentUrl(), uploadAndDownloadUrl);
     }
 
-    @Test
+    @Test(priority = 20)
     public void verifyThatUserCanUploadAFile() throws InterruptedException {
         uploadAndDownloadPage.uploadFile();
         Assert.assertTrue(isDisplayed(uploadAndDownloadPage.messageAfterUpload));
 
     }
 
-    @Test
+    @Test(priority = 30)
     public void verifyThatUserCanDownloadUploadedFile() throws InterruptedException {
         uploadAndDownloadPage.uploadFile();
         waitForVisibility(uploadAndDownloadPage.messageAfterUpload);

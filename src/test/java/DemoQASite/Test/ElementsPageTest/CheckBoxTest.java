@@ -1,9 +1,10 @@
-package DemoQASite.Test.ElemenetsPageTest;
+package DemoQASite.Test.ElementsPageTest;
 
 import DemoQASite.Base.BaseTest;
 import DemoQASite.Page.ElemnetsPages.CheckBoxPage;
 import DemoQASite.Page.HomePage;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -16,15 +17,18 @@ public class CheckBoxTest extends BaseTest {
 
     @BeforeMethod
     public void checkBoxPageSetUp() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(checkBoxUrl);
-        homePage = new HomePage();
-        checkBoxPage = new CheckBoxPage();
+        homePage = new HomePage(driver);
+        checkBoxPage = new CheckBoxPage(driver);
     }
 
-    @Test
+    @Test(priority = 10)
     public void verifyThatLeftPanelOnCheckBoxIsVisible() {
         Assert.assertTrue(isDisplayed(checkBoxPage.leftPanel));
         checkBoxPage.checkVisibleElements();
@@ -32,11 +36,11 @@ public class CheckBoxTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(priority = 20)
     public void verifyToolsQALogoIsVisibleOnCheckBoxPage() {
         Assert.assertTrue(isDisplayed(checkBoxPage.mainLogo));
     }
-    @Test
+    @Test(priority = 30)
     public void verifyThatHomeCheckBoxIsClickable() {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         checkBoxPage.clickOnHomeCheckbox();
@@ -45,14 +49,14 @@ public class CheckBoxTest extends BaseTest {
         Assert.assertTrue(isDisplayed(checkBoxPage.selectedCheckBox));
     }
 
-    @Test
+    @Test(priority = 40)
     public void verifyThatHomeCheckBoxIsUnSelected() {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         Assert.assertTrue(isDisplayed(checkBoxPage.unSelectedCheckBox));
         Assert.assertTrue(isDisplayed(checkBoxPage.checkBox.get(0)));
     }
 
-    @Test
+    @Test(priority = 50)
     public void verifyThatHomeCheckBoxIsUnselectedAfterDoubleClick() {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         checkBoxPage.clickOnHomeCheckbox();
@@ -63,7 +67,7 @@ public class CheckBoxTest extends BaseTest {
         Assert.assertFalse(isDisplayed(checkBoxPage.resultMessage));
     }
 
-    @Test
+    @Test(priority = 60)
     public void verifyThatPlusButtonIsClickable() {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         checkBoxPage.clickOnPlusButton();
@@ -74,7 +78,7 @@ public class CheckBoxTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(priority = 70)
     public void verifyThatMinusButtonIsClickable() {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         checkBoxPage.clickOnPlusButton();
@@ -86,7 +90,7 @@ public class CheckBoxTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(priority = 80)
     public void verifyThatDesktopCheckBoxIsClickable() throws InterruptedException {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         checkBoxPage.clickOnPlusButton();
@@ -100,7 +104,7 @@ public class CheckBoxTest extends BaseTest {
         Assert.assertEquals(checkBoxPage.textSuccess.get(2).getText(), successText3);
     }
 
-    @Test
+    @Test(priority = 90)
     public void verifyThatDesktopCheckBoxCanBeUnSelected() {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         checkBoxPage.clickOnPlusButton();
@@ -109,7 +113,7 @@ public class CheckBoxTest extends BaseTest {
         Assert.assertFalse(isDisplayed(checkBoxPage.resultMessage));
     }
 
-    @Test
+    @Test(priority = 100)
     public void verifyThatDocumentsCheckBoxIsClickable() {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         checkBoxPage.clickOnPlusButton();
@@ -127,7 +131,7 @@ public class CheckBoxTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(priority = 110)
     public void verifyThatDocumentsCheckBoxCanBeUnSelected() {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         checkBoxPage.clickOnPlusButton();
@@ -136,7 +140,7 @@ public class CheckBoxTest extends BaseTest {
         Assert.assertFalse(isDisplayed(checkBoxPage.resultMessage));
     }
 
-    @Test
+    @Test(priority = 120)
     public void verifyThatDownloadsCheckBoxIsClickable() {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         checkBoxPage.clickOnPlusButton();
@@ -151,7 +155,7 @@ public class CheckBoxTest extends BaseTest {
         Assert.assertEquals(checkBoxPage.textSuccess.get(2).getText(), successText3);
     }
 
-    @Test
+    @Test(priority = 130)
     public void verifyThatDownloadsCheckBoxCanBeUnSelected() {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         checkBoxPage.clickOnPlusButton();
@@ -161,7 +165,7 @@ public class CheckBoxTest extends BaseTest {
         Assert.assertFalse(isDisplayed(checkBoxPage.resultMessage));
     }
 
-    @Test
+    @Test(priority = 140)
     public void verifyThatValidFooterIsVisibleOnCheckBoxPage(){
         scrollToElement(checkBoxPage.footerCheckBox);
         String expectedFooter ="© 2013-2020 TOOLSQA.COM | ALL RIGHTS RESERVED.";

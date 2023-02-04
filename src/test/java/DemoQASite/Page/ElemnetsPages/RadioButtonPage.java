@@ -1,6 +1,7 @@
 package DemoQASite.Page.ElemnetsPages;
 
 import DemoQASite.Base.BaseTest;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class RadioButtonPage extends BaseTest {
 
-    public RadioButtonPage() {
+    public RadioButtonPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 

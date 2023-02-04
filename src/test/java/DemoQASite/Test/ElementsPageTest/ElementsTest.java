@@ -1,4 +1,4 @@
-package DemoQASite.Test.ElemenetsPageTest;
+package DemoQASite.Test.ElementsPageTest;
 
 import DemoQASite.Base.BaseTest;
 import DemoQASite.Page.ElemnetsPages.BrokenImagePage;
@@ -6,6 +6,7 @@ import DemoQASite.Page.ElemnetsPages.ElementsPage;
 import DemoQASite.Page.HomePage;
 import DemoQASite.Page.ElemnetsPages.TextBoxPage;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -18,34 +19,37 @@ public class ElementsTest extends BaseTest {
 
     @BeforeMethod
     public void elementsPageSetUp() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(elementsUrl);
-        homePage = new HomePage();
-        elementsPage = new ElementsPage();
-        textBoxPage = new TextBoxPage();
-        brokenImagePage = new BrokenImagePage();
+        homePage = new HomePage(driver);
+        elementsPage = new ElementsPage(driver);
+        textBoxPage = new TextBoxPage(driver);
+        brokenImagePage = new BrokenImagePage(driver);
     }
 
-    @Test
+    @Test(priority = 10)
     public void verifyThatLeftPanelOnElementsPageIsVisible() {
         Assert.assertTrue(isDisplayed(elementsPage.leftPanel));
         elementsPage.checkVisibleElements();
         Assert.assertEquals(driver.getCurrentUrl(), elementsUrl);
     }
 
-    @Test
+    @Test(priority = 20)
     public void verifyThatTextBoxButtonIsClickable() {
         waitForClickability(elementsPage.textBox);
         elementsPage.clickOnTextBox();
-        Assert.assertEquals(driver.getCurrentUrl(), elementsUrl);
+        Assert.assertEquals(driver.getCurrentUrl(), textBoxUrl);
         String expectedText = "Text Box";
         Assert.assertEquals(elementsPage.elementsTitle.getText(), expectedText);
         Assert.assertTrue(isDisplayed(textBoxPage.fullNameField));
     }
 
-    @Test
+    @Test(priority = 30)
     public void verifyThatCheckBoxButtonIsClickable() {
         waitForClickability(elementsPage.checkBox);
         elementsPage.clickOnCheckBox();
@@ -55,7 +59,7 @@ public class ElementsTest extends BaseTest {
         Assert.assertTrue(isDisplayed(elementsPage.plusAndMinusOptions));
     }
 
-    @Test
+    @Test(priority = 40)
     public void verifyThatRadioButtonIsClickable() {
         waitForClickability(elementsPage.radioButton);
         elementsPage.clickOnRadioButton();
@@ -65,7 +69,7 @@ public class ElementsTest extends BaseTest {
         Assert.assertTrue(isDisplayed(elementsPage.yesRadioButton));
     }
 
-    @Test
+    @Test(priority = 50)
     public void verifyThatWebTablesButtonIsClickable() {
         scrollToElement(elementsPage.webTables);
         waitForClickability(elementsPage.webTables);
@@ -76,7 +80,7 @@ public class ElementsTest extends BaseTest {
         Assert.assertTrue(isDisplayed(elementsPage.addButtonWebTables));
     }
 
-    @Test
+    @Test(priority = 60)
     public void verifyThatButtonsButtonIsClickable() {
         scrollToElement(elementsPage.buttons);
         waitForClickability(elementsPage.buttons);
@@ -87,7 +91,7 @@ public class ElementsTest extends BaseTest {
         Assert.assertTrue(isDisplayed(elementsPage.doubleClickButton));
     }
 
-    @Test
+    @Test(priority = 70)
     public void verifyThatLinksButtonIsClickable() {
         scrollToElement(elementsPage.links);
         waitForClickability(elementsPage.links);
@@ -97,7 +101,7 @@ public class ElementsTest extends BaseTest {
         Assert.assertEquals(elementsPage.elementsTitle.getText(), expectedText);
         Assert.assertTrue(isDisplayed(elementsPage.HomeLink));
     }
-    @Test
+    @Test(priority = 80)
     public void verifyThatBrokenLinkIMageButtonIsClickable() {
         scrollToElement(elementsPage.brokenLinksImage);
         waitForClickability(elementsPage.brokenLinksImage);

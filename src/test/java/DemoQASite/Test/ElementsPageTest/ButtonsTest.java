@@ -1,8 +1,9 @@
-package DemoQASite.Test.ElemenetsPageTest;
+package DemoQASite.Test.ElementsPageTest;
 
 import DemoQASite.Base.BaseTest;
 import DemoQASite.Page.ElemnetsPages.ButtonsPage;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -16,28 +17,31 @@ public class ButtonsTest extends BaseTest {
 
     @BeforeMethod
     public void buttonsPageSetUp() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(buttonsUrl);
-        buttonsPage = new ButtonsPage();
+        buttonsPage = new ButtonsPage(driver);
 
     }
 
-    @Test
+    @Test(priority = 10)
     public void verifyThatLeftPanelOnButtonsIsVisible() {
         Assert.assertTrue(isDisplayed(buttonsPage.leftPanel));
         buttonsPage.checkVisibleElements();
         Assert.assertEquals(driver.getCurrentUrl(), buttonsUrl);
     }
 
-    @Test
+    @Test(priority = 20)
     public void verifyThatLogoImageIsVisibleOnButtonsPage() {
         Assert.assertEquals(driver.getCurrentUrl(), buttonsUrl);
         Assert.assertTrue(isDisplayed(buttonsPage.logoDemoQAButtons));
     }
 
-    @Test
+    @Test(priority = 30)
     public void verityThatTitleButtonsIsValid() {
         String expectedTitle = "Buttons";
         Assert.assertEquals(buttonsPage.titleButtons.getText(), expectedTitle);
@@ -45,7 +49,7 @@ public class ButtonsTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(priority = 40)
     public void verifyDoubleClickOnButtonsPageIsClickable(){
         waitForVisibility(buttonsPage.doubleClickButton);
         doubleClickOnButton(buttonsPage.doubleClickButton);
@@ -54,7 +58,7 @@ public class ButtonsTest extends BaseTest {
         Assert.assertEquals(buttonsPage.doubleClickMessage.getText(), expectedText);
     }
 
-    @Test
+    @Test(priority = 50)
     public void verifyRightClickOnButtonsPageIsClickable(){
         waitForVisibility(buttonsPage.rightClickButton);
         Actions a = new Actions(driver);
@@ -64,7 +68,7 @@ public class ButtonsTest extends BaseTest {
         Assert.assertEquals(buttonsPage.rightClickMessage.getText(), expectedText);
     }
 
-    @Test
+    @Test(priority = 60)
     public void verifyDynamicClickOnButtonsPageIsClickable(){
         waitForVisibility(buttonsPage.doubleClickButton);
         scrollToElement(buttonsPage.dynamicClick.get(2));
@@ -74,7 +78,7 @@ public class ButtonsTest extends BaseTest {
         Assert.assertEquals(buttonsPage.dynamicClickMessage.getText(), expectedText);
     }
 
-    @Test
+    @Test(priority = 70)
     public void verifyThatValidFooterIsVisibleOnButtonsPage(){
         scrollToElement(buttonsPage.footerButtons);
         String expectedFooter ="© 2013-2020 TOOLSQA.COM | ALL RIGHTS RESERVED.";

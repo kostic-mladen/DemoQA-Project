@@ -1,14 +1,14 @@
 package DemoQASite.Page.ElemnetsPages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static DemoQASite.Base.BaseTest.driver;
 
 public class BrokenImagePage {
 
-    public BrokenImagePage() {
+    public BrokenImagePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 

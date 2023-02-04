@@ -1,9 +1,10 @@
-package DemoQASite.Test.ElemenetsPageTest;
+package DemoQASite.Test.ElementsPageTest;
 
 import DemoQASite.Base.BaseTest;
 
 import DemoQASite.Page.ElemnetsPages.RadioButtonPage;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -16,47 +17,50 @@ public class RadioButtonTest extends BaseTest {
 
     @BeforeMethod
     public void radioButtonPageSetUp() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+       // driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(radioBoxUrl);
-        radioButtonPage = new RadioButtonPage();
+        radioButtonPage = new RadioButtonPage(driver);
 
     }
 
-    @Test
+    @Test(priority = 10)
     public void verifyThatLeftPanelOnElementsPageIsVisible() {
         Assert.assertTrue(isDisplayed(radioButtonPage.leftPanel));
         radioButtonPage.checkVisibleElements();
         Assert.assertEquals(driver.getCurrentUrl(), radioBoxUrl);
     }
-    @Test
+    @Test(priority = 20)
     public void verifyThatLogoImageIsVisibleOnRadioButtonPage() {
         Assert.assertEquals(driver.getCurrentUrl(), radioBoxUrl);
         Assert.assertTrue(isDisplayed(radioButtonPage.logoDemoQARadioB));
     }
 
-    @Test
+    @Test(priority = 30)
     public void verityThatTitleRadioButtonIsValid() {
         String expectedTitle = "Radio Button";
         Assert.assertEquals(radioButtonPage.titleRadioButton.getText(), expectedTitle);
         Assert.assertEquals(driver.getCurrentUrl(), radioBoxUrl);
     }
 
-    @Test
+    @Test(priority = 40)
     public void verifyQuestionOnRadioButtonPage() {
         String expectedText = "Do you like the site?";
         Assert.assertEquals(radioButtonPage.infoQuestion.getText(), expectedText);
         Assert.assertEquals(driver.getCurrentUrl(), radioBoxUrl);
     }
 
-    @Test
+    @Test(priority = 50)
     public void verifyThatQuestionIsVisible() {
         Assert.assertTrue(isDisplayed(radioButtonPage.infoQuestion));
         Assert.assertEquals(driver.getCurrentUrl(), radioBoxUrl);
     }
 
-    @Test
+    @Test(priority = 60)
     public void verifyThatYesRadioButtonIsSelected() {
         waitForVisibility(radioButtonPage.yesButton);
         radioButtonPage.clickOnYesButton();
@@ -65,7 +69,7 @@ public class RadioButtonTest extends BaseTest {
         Assert.assertEquals(radioButtonPage.yesButton.getText(), expectedText);
     }
 
-    @Test
+    @Test(priority = 70)
     public void verifyThatImpressiveRadioButtonIsSelected() {
         waitForVisibility(radioButtonPage.impressiveButton);
         radioButtonPage.clickOnImpressiveButton();
@@ -74,7 +78,7 @@ public class RadioButtonTest extends BaseTest {
         Assert.assertEquals(radioButtonPage.impressiveButton.getText(), expectedText);
     }
 
-    @Test
+    @Test(priority = 80)
     public void verifyThatNoButtonIsVisible() {
         Assert.assertTrue(isDisplayed(radioButtonPage.noButton));
         ;
@@ -82,14 +86,14 @@ public class RadioButtonTest extends BaseTest {
         Assert.assertTrue(isDisplayed(radioButtonPage.impressiveButton));
     }
 
-    @Test
+    @Test(priority = 90)
     public void verifyThatNoButtonIsNotClickable() {
         waitForVisibility(radioButtonPage.noButton);
         radioButtonPage.clickOnNoButton();
         Assert.assertFalse(isDisplayed(radioButtonPage.textSuccess));
     }
 
-    @Test
+    @Test(priority = 100)
     public void verifyThatValidFooterIsVisibleOnRadioButtonPage() {
         scrollToElement(radioButtonPage.footerRadioButton);
         String expectedFooter = "© 2013-2020 TOOLSQA.COM | ALL RIGHTS RESERVED.";

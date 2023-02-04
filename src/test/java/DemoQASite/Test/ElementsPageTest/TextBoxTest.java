@@ -1,10 +1,11 @@
-package DemoQASite.Test.ElemenetsPageTest;
+package DemoQASite.Test.ElementsPageTest;
 
 import DemoQASite.Base.BaseTest;
 import DemoQASite.Page.ElemnetsPages.ElementsPage;
 import DemoQASite.Page.HomePage;
 import DemoQASite.Page.ElemnetsPages.TextBoxPage;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -17,23 +18,26 @@ public class TextBoxTest extends BaseTest {
 
     @BeforeMethod
     public void textBoxPageSetUp() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+       // driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(textBoxUrl);
-        homePage = new HomePage();
-        elementsPage = new ElementsPage();
-        textBoxPage = new TextBoxPage();
+        homePage = new HomePage(driver);
+        elementsPage = new ElementsPage(driver);
+        textBoxPage = new TextBoxPage(driver);
     }
 
-    @Test
+    @Test(priority = 10)
     public void verifyThatLeftPanelOnTextBoxIsVisible() {
         Assert.assertTrue(isDisplayed(textBoxPage.leftPanel));
         textBoxPage.checkVisibleElements();
         Assert.assertEquals(driver.getCurrentUrl(), textBoxUrl);
     }
 
-    @Test
+    @Test(priority = 20)
     public void verifyTextBoxFormWithValidInputs(){
         waitForVisibility(textBoxPage.fullNameField);
         textBoxPage.insertFullName("Mladen Kostic");

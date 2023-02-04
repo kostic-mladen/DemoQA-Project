@@ -1,8 +1,9 @@
-package DemoQASite.Test.ElemenetsPageTest;
+package DemoQASite.Test.ElementsPageTest;
 
 import DemoQASite.Base.BaseTest;
 import DemoQASite.Page.ElemnetsPages.DynamicPropertyPage;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -14,74 +15,77 @@ import java.time.Duration;
 public class DynamicTest extends BaseTest {
     @BeforeMethod
     public void dynamicPageSetUp() throws IOException {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+        //driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(dynamicUrl);
-        dynamicPropertyPage = new DynamicPropertyPage();
+        dynamicPropertyPage = new DynamicPropertyPage(driver);
     }
 
-    @Test
+    @Test(priority = 10)
     public void verifyThatLogoOnDynamicPropertyPageIsPresent() {
         Assert.assertTrue(isDisplayed(dynamicPropertyPage.logoDynamic));
         Assert.assertEquals(driver.getCurrentUrl(), dynamicUrl);
     }
 
-    @Test
+    @Test(priority = 20)
     public void verifyThatTitleOnDynamicPropertyPageIsValid() {
         String expectedText = "Dynamic Properties";
         Assert.assertEquals(dynamicPropertyPage.titleDynamic.getText(), expectedText);
         Assert.assertEquals(driver.getCurrentUrl(), dynamicUrl);
     }
 
-    @Test
+    @Test(priority = 30)
     public void verifyThatLeftPanelIsVisible() {
         Assert.assertTrue(isDisplayed(dynamicPropertyPage.leftPanel));
         dynamicPropertyPage.checkVisibleElements();
         Assert.assertEquals(driver.getCurrentUrl(), dynamicUrl);
     }
 
-    @Test
+    @Test(priority = 40)
     public void verifyThatWillEnabled5secondsButtonIsVisible() {
         Assert.assertTrue(isDisplayed(dynamicPropertyPage.listOfButtons.get(0)));
     }
 
-    @Test
+    @Test(priority = 50)
     public void verifyThatColorChangeButtonIsPresent() {
         Assert.assertTrue(isDisplayed(dynamicPropertyPage.listOfButtons.get(1)));
     }
 
-    @Test
+    @Test(priority = 60)
     public void verifyThatColorChangeButtonChangeItsColorAfter5s() {
         waitForVisibility(dynamicPropertyPage.buttonAfterColorChange);
         Assert.assertTrue(isDisplayed(dynamicPropertyPage.buttonAfterColorChange));
     }
 
-    @Test
+    @Test(priority = 70)
     public void verifyThatColorButtonIsNotVisibleBefore5s() throws InterruptedException {
         Thread.sleep(4000);
         Assert.assertFalse(isDisplayed(dynamicPropertyPage.buttonAfterColorChange));
     }
 
-    @Test
+    @Test(priority = 80)
     public void verifyThatColorChangeButtonChangeItsColorAfter6s() throws InterruptedException {
         Thread.sleep(6000);
         Assert.assertTrue(isDisplayed(dynamicPropertyPage.buttonAfterColorChange));
     }
 
 
-    @Test
+    @Test(priority = 90)
     public void verifyThatVisibleAfter5secondsButtonIsVisible() {
         waitForVisibility(dynamicPropertyPage.buttonAfterColorChange);
         Assert.assertTrue(isDisplayed(dynamicPropertyPage.listOfButtons.get(2)));
     }
 
-    @Test
+    @Test(priority = 100)
     public void verifyThatFooterIsVisibleOnDynamicPropertyPage(){
         Assert.assertTrue(isDisplayed(dynamicPropertyPage.footerDynamicPage));
         Assert.assertEquals(driver.getCurrentUrl(), dynamicUrl);
     }
-    @Test
+    @Test(priority = 110)
     public void verifyThatFooterIsValidOnDynamicPropertyPage(){
         String expectedText = "© 2013-2020 TOOLSQA.COM | ALL RIGHTS RESERVED.";
         Assert.assertEquals(dynamicPropertyPage.footerDynamicPage.getText(), expectedText);
@@ -90,7 +94,7 @@ public class DynamicTest extends BaseTest {
 
 
     @AfterMethod
-    public void checkBoxPageClosed() {
+    public void dynamicPageClosed() {
         driver.manage().deleteAllCookies();
         driver.quit();
     }
