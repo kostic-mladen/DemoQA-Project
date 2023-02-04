@@ -1,4 +1,4 @@
-package DemoQASite.Page;
+package DemoQASite.Page.ElemnetsPages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

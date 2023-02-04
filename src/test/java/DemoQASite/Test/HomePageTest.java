@@ -1,7 +1,7 @@
 package DemoQASite.Test;
 
 import DemoQASite.Base.BaseTest;
-import DemoQASite.Page.ElementsPage;
+import DemoQASite.Page.ElemnetsPages.ElementsPage;
 import DemoQASite.Page.HomePage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;

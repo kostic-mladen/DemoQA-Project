@@ -1,7 +1,7 @@
-package DemoQASite.Test;
+package DemoQASite.Test.ElemenetsPageTest;
 
 import DemoQASite.Base.BaseTest;
-import DemoQASite.Page.DynamicPropertyPage;
+import DemoQASite.Page.ElemnetsPages.DynamicPropertyPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;

@@ -1,6 +1,7 @@
 package DemoQASite.Base;
 
 import DemoQASite.Page.*;
+import DemoQASite.Page.ElemnetsPages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

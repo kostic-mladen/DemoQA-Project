@@ -1,7 +1,7 @@
-package DemoQASite.Test;
+package DemoQASite.Test.ElemenetsPageTest;
 
 import DemoQASite.Base.BaseTest;
-import DemoQASite.Page.ButtonsPage;
+import DemoQASite.Page.ElemnetsPages.ButtonsPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;

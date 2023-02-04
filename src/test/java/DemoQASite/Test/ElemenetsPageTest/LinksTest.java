@@ -1,8 +1,8 @@
-package DemoQASite.Test;
+package DemoQASite.Test.ElemenetsPageTest;
 
 import DemoQASite.Base.BaseTest;
 
-import DemoQASite.Page.LinksPage;
+import DemoQASite.Page.ElemnetsPages.LinksPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;

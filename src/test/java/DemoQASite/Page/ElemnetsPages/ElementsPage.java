@@ -1,4 +1,4 @@
-package DemoQASite.Page;
+package DemoQASite.Page.ElemnetsPages;
 
 import DemoQASite.Base.BaseTest;
 import org.openqa.selenium.WebElement;
