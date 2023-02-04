@@ -46,8 +46,12 @@ public class ElementsPage extends BaseTest {
     @FindBy(xpath = "//body/div[@id='app']/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/ul[1]/li[6]/span[1]")
     public WebElement links;
 
+    @FindBy(xpath = "//span[contains(text(),'Broken Links - Images')]")
+    public WebElement brokenLinksImage;
+
     @FindBy(linkText = "Home")
     public WebElement HomeLink;
+
 
     public void clickOnTextBox(){
         textBox.click();
@@ -71,5 +75,9 @@ public class ElementsPage extends BaseTest {
 
     public void clickOnLinks(){
         links.click();
+    }
+
+    public void clickOnBrokenLinksPage(){
+        brokenLinksImage.click();
     }
 }

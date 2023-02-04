@@ -41,8 +41,7 @@ public class CheckBoxTest extends BaseTest {
         waitForVisibility(checkBoxPage.checkBox.get(0));
         checkBoxPage.clickOnHomeCheckbox();
         Assert.assertTrue(isDisplayed(checkBoxPage.resultMessage));
-        String expectedUrl = excelReader.getStringData("CheckBox", 1, 0);
-        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+        Assert.assertEquals(driver.getCurrentUrl(), checkBoxUrl);
         Assert.assertTrue(isDisplayed(checkBoxPage.selectedCheckBox));
     }
 
@@ -60,8 +59,7 @@ public class CheckBoxTest extends BaseTest {
         checkBoxPage.clickOnHomeCheckbox();
         waitForVisibility(checkBoxPage.checkBox.get(0));
         Assert.assertTrue(isDisplayed(checkBoxPage.unSelectedCheckBox));
-        String expectedUrl = excelReader.getStringData("CheckBox", 1, 0);
-        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+        Assert.assertEquals(driver.getCurrentUrl(), checkBoxUrl);
         Assert.assertFalse(isDisplayed(checkBoxPage.resultMessage));
     }
 

@@ -49,17 +49,17 @@ public class BaseTest {
     public void setUp() throws IOException {
         WebDriverManager.chromedriver().setup();
         excelReader = new ExcelReader("src/test/java/DemoQASite/TestData.xlsx");
-        homeUrl = excelReader.getStringData("URL", 1, 0);
+        homeUrl = excelReader.getStringData("HomePage", 1, 0);
         elementsUrl = excelReader.getStringData("Elements", 1, 0);
-        textBoxUrl = excelReader.getStringData("TextBox", 1, 0);
-        checkBoxUrl = excelReader.getStringData("CheckBox", 1, 0);
-        radioBoxUrl = excelReader.getStringData("RadioButton", 1, 0);
-        buttonsUrl = excelReader.getStringData("Buttons", 1, 0);
-        linksUrl = excelReader.getStringData("Links", 1, 0);
-        brokenImageUrl = excelReader.getStringData("BrokenImage", 1, 0);
-        brokenLinkUrl = excelReader.getStringData("BrokenImage", 1, 1);
-        uploadAndDownloadUrl = excelReader.getStringData("Upload", 1, 0);
-        dynamicUrl = excelReader.getStringData("Dynamic", 1, 0);
+        textBoxUrl = excelReader.getStringData("Elements", 1, 1);
+        checkBoxUrl = excelReader.getStringData("Elements", 1, 2);
+        radioBoxUrl = excelReader.getStringData("Elements", 1, 3);
+        buttonsUrl = excelReader.getStringData("Elements", 1, 5);
+        linksUrl = excelReader.getStringData("Elements", 1, 6);
+        brokenImageUrl = excelReader.getStringData("Elements", 1, 7);
+        brokenLinkUrl = excelReader.getStringData("Elements", 2, 7);
+        uploadAndDownloadUrl = excelReader.getStringData("Elements", 1, 8);
+        dynamicUrl = excelReader.getStringData("Elements", 1, 9);
     }
 
     public void waitForVisibility(WebElement element) {

@@ -1,6 +1,7 @@
 package DemoQASite.Test.ElemenetsPageTest;
 
 import DemoQASite.Base.BaseTest;
+import DemoQASite.Page.ElemnetsPages.BrokenImagePage;
 import DemoQASite.Page.ElemnetsPages.ElementsPage;
 import DemoQASite.Page.HomePage;
 import DemoQASite.Page.ElemnetsPages.TextBoxPage;
@@ -24,6 +25,7 @@ public class ElementsTest extends BaseTest {
         homePage = new HomePage();
         elementsPage = new ElementsPage();
         textBoxPage = new TextBoxPage();
+        brokenImagePage = new BrokenImagePage();
     }
 
     @Test
@@ -37,7 +39,7 @@ public class ElementsTest extends BaseTest {
     public void verifyThatTextBoxButtonIsClickable() {
         waitForClickability(elementsPage.textBox);
         elementsPage.clickOnTextBox();
-        Assert.assertEquals(driver.getCurrentUrl(), excelReader.getStringData("TextBox", 1, 0));
+        Assert.assertEquals(driver.getCurrentUrl(), elementsUrl);
         String expectedText = "Text Box";
         Assert.assertEquals(elementsPage.elementsTitle.getText(), expectedText);
         Assert.assertTrue(isDisplayed(textBoxPage.fullNameField));
@@ -47,7 +49,7 @@ public class ElementsTest extends BaseTest {
     public void verifyThatCheckBoxButtonIsClickable() {
         waitForClickability(elementsPage.checkBox);
         elementsPage.clickOnCheckBox();
-        Assert.assertEquals(driver.getCurrentUrl(), excelReader.getStringData("CheckBox", 1, 0));
+        Assert.assertEquals(driver.getCurrentUrl(), checkBoxUrl);
         String expectedText = "Check Box";
         Assert.assertEquals(elementsPage.elementsTitle.getText(), expectedText);
         Assert.assertTrue(isDisplayed(elementsPage.plusAndMinusOptions));
@@ -57,7 +59,7 @@ public class ElementsTest extends BaseTest {
     public void verifyThatRadioButtonIsClickable() {
         waitForClickability(elementsPage.radioButton);
         elementsPage.clickOnRadioButton();
-        Assert.assertEquals(driver.getCurrentUrl(), excelReader.getStringData("RadioButton", 1, 0));
+        Assert.assertEquals(driver.getCurrentUrl(), radioBoxUrl);
         String expectedText = "Radio Button";
         Assert.assertEquals(elementsPage.elementsTitle.getText(), expectedText);
         Assert.assertTrue(isDisplayed(elementsPage.yesRadioButton));
@@ -68,7 +70,7 @@ public class ElementsTest extends BaseTest {
         scrollToElement(elementsPage.webTables);
         waitForClickability(elementsPage.webTables);
         elementsPage.clickOnWebTables();
-        Assert.assertEquals(driver.getCurrentUrl(), excelReader.getStringData("WebTables", 1, 0));
+        Assert.assertEquals(driver.getCurrentUrl(), excelReader.getStringData("Elements", 1, 4));
         String expectedText = "Web Tables";
         Assert.assertEquals(elementsPage.elementsTitle.getText(), expectedText);
         Assert.assertTrue(isDisplayed(elementsPage.addButtonWebTables));
@@ -79,7 +81,7 @@ public class ElementsTest extends BaseTest {
         scrollToElement(elementsPage.buttons);
         waitForClickability(elementsPage.buttons);
         elementsPage.clickOnButtons();
-        Assert.assertEquals(driver.getCurrentUrl(), excelReader.getStringData("Buttons", 1, 0));
+        Assert.assertEquals(driver.getCurrentUrl(), buttonsUrl);
         String expectedText = "Buttons";
         Assert.assertEquals(elementsPage.elementsTitle.getText(), expectedText);
         Assert.assertTrue(isDisplayed(elementsPage.doubleClickButton));
@@ -90,10 +92,20 @@ public class ElementsTest extends BaseTest {
         scrollToElement(elementsPage.links);
         waitForClickability(elementsPage.links);
         elementsPage.clickOnLinks();
-        Assert.assertEquals(driver.getCurrentUrl(), excelReader.getStringData("Links", 1, 0));
+        Assert.assertEquals(driver.getCurrentUrl(), linksUrl);
         String expectedText = "Links";
         Assert.assertEquals(elementsPage.elementsTitle.getText(), expectedText);
         Assert.assertTrue(isDisplayed(elementsPage.HomeLink));
+    }
+    @Test
+    public void verifyThatBrokenLinkIMageButtonIsClickable() {
+        scrollToElement(elementsPage.brokenLinksImage);
+        waitForClickability(elementsPage.brokenLinksImage);
+        elementsPage.clickOnBrokenLinksPage();
+        Assert.assertEquals(driver.getCurrentUrl(), brokenImageUrl);
+        String expectedText = "Broken Links - Images";
+        Assert.assertEquals(elementsPage.elementsTitle.getText(), expectedText);
+        Assert.assertTrue(isDisplayed(brokenImagePage.validImage));
     }
 
     @AfterMethod
