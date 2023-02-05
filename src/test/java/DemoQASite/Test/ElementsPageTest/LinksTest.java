@@ -71,6 +71,7 @@ public class LinksTest extends BaseTest {
 
     @Test(priority = 50)
     public void verifyThatDynamicHomeLinkIsClickable() {
+        waitForVisibility(linksPage.dynamicHomeLink);
         linksPage.clickOnDynamicHomeLink();
         String originalWindow = driver.getWindowHandle();
         wait.until(numberOfWindowsToBe(2));

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test name="Parallel Tests" group-by-instances="true">
+        <classes>
+            <class name="DemoQASite.Test.HomePageTest"></class>
+            <class name="DemoQASite.Test.ElementsPageTest.ElementsTest"></class>
+            <class name="DemoQASite.Test.ElementsPageTest.TextBoxTest"></class>
+            <class name="DemoQASite.Test.ElementsPageTest.CheckBoxTest"></class>
+            <class name="DemoQASite.Test.ElementsPageTest.RadioButtonTest"></class>
+            <class name="DemoQASite.Test.ElementsPageTest.LinksTest"></class>
+            <class name="DemoQASite.Test.ElementsPageTest.BrokenImageTest"></class>
+            <class name="DemoQASite.Test.ElementsPageTest.UploadAndDownloadTest"></class>
+            <class name="DemoQASite.Test.ElementsPageTest.DynamicTest"></class>
+            <class name="DemoQASite.Test.BookStoreTest.BookStorePageTest"></class>
+            <class name="DemoQASite.Test.BookStoreTest.LoginTest"></class>
+            <class name="DemoQASite.Test.BookStoreTest.ProfileTest"></class>
+        </classes>
+    </test>
+</suite>

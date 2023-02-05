@@ -1,6 +1,10 @@
 package DemoQASite.Base;
 
 import DemoQASite.Page.*;
+import DemoQASite.Page.BookStorePages.BookStorePage;
+import DemoQASite.Page.BookStorePages.LoginPage;
+import DemoQASite.Page.BookStorePages.ProfilePage;
+import DemoQASite.Page.BookStorePages.RegisterPage;
 import DemoQASite.Page.ElemnetsPages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
@@ -27,10 +31,15 @@ public class BaseTest {
     public CheckBoxPage checkBoxPage;
     public RadioButtonPage radioButtonPage;
 
+    public WebTablesPage webTablesPage;
     public ButtonsPage buttonsPage;
     public BrokenImagePage brokenImagePage;
     public UploadAndDownloadPage uploadAndDownloadPage;
     public DynamicPropertyPage dynamicPropertyPage;
+    public BookStorePage bookStorePage;
+    public LoginPage loginPage;
+    public RegisterPage registerPage;
+    public ProfilePage profilePage;
 
     public LinksPage linksPage;
     public String homeUrl;
@@ -38,12 +47,17 @@ public class BaseTest {
     public String textBoxUrl;
     public String checkBoxUrl;
     public String radioBoxUrl;
+    public String webTablesUrl;
     public String buttonsUrl;
     public String linksUrl;
     public String brokenImageUrl;
     public String brokenLinkUrl;
     public String uploadAndDownloadUrl;
     public String dynamicUrl;
+    public String loginUrl;
+    public String bookStoreUrl;
+    public String profileUrl;
+    public String registerUrl;
 
     @BeforeClass
     public void setUp() throws IOException {
@@ -54,12 +68,17 @@ public class BaseTest {
         textBoxUrl = excelReader.getStringData("Elements", 1, 1);
         checkBoxUrl = excelReader.getStringData("Elements", 1, 2);
         radioBoxUrl = excelReader.getStringData("Elements", 1, 3);
+        webTablesUrl = excelReader.getStringData("Elements", 1,4);
         buttonsUrl = excelReader.getStringData("Elements", 1, 5);
         linksUrl = excelReader.getStringData("Elements", 1, 6);
         brokenImageUrl = excelReader.getStringData("Elements", 1, 7);
         brokenLinkUrl = excelReader.getStringData("Elements", 2, 7);
         uploadAndDownloadUrl = excelReader.getStringData("Elements", 1, 8);
         dynamicUrl = excelReader.getStringData("Elements", 1, 9);
+        loginUrl = excelReader.getStringData("BookStore",3,0);
+        bookStoreUrl = excelReader.getStringData("BookStore",1,0);
+        profileUrl = excelReader.getStringData("BookStore", 5,0);
+        registerUrl = excelReader.getStringData("BookStore", 7,0);
     }
 
     public void waitForVisibility(WebElement element) {
