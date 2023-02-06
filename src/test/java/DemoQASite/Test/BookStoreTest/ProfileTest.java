@@ -38,6 +38,7 @@ public class ProfileTest extends BaseTest {
 
     @Test(priority = 10)
     public void verifyThatLoginLinkOnProfilePageIsClickable() {
+        scrollToElement(profilePage.login);
         profilePage.clickLogin();
         Assert.assertTrue(isDisplayed(loginPage.usernameField));
         Assert.assertTrue(isDisplayed(loginPage.passwordField));
