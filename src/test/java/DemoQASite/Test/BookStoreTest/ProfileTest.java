@@ -24,7 +24,7 @@ public class ProfileTest extends BaseTest {
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
 
-       // driver = new ChromeDriver();
+        // driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(profileUrl);
@@ -45,6 +45,7 @@ public class ProfileTest extends BaseTest {
 
     @Test(priority = 20)
     public void verifyThatRegisterLinkOnProfilePageIsClickable() {
+        scrollToElement(profilePage.register);
         profilePage.clickRegister();
         Assert.assertTrue(isDisplayed(registerPage.firstNameField));
         Assert.assertTrue(isDisplayed(registerPage.lastNameField));
