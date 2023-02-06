@@ -1,9 +1,9 @@
 package DemoQASite.Test.BookStoreTest;
 
 import DemoQASite.Base.BaseTest;
-import DemoQASite.Page.BookStorePages.BookStorePage;
+
 import DemoQASite.Page.BookStorePages.LoginPage;
-import DemoQASite.Page.HomePage;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -28,9 +28,8 @@ public class LoginTest extends BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(loginUrl);
-        homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
-        bookStorePage = new BookStorePage(driver);
+
 
 
     }
@@ -76,6 +75,7 @@ public class LoginTest extends BaseTest {
             scrollToElement(loginPage.logInButton);
             loginPage.clickOnLoginButton();
             waitForVisibility(loginPage.usernameField);
+
             Assert.assertTrue(isDisplayed(loginPage.usernameField));
             Assert.assertTrue(isDisplayed(loginPage.passwordField));
             String expectedText = "Invalid username or password!";

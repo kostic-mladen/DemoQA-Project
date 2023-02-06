@@ -3,11 +3,8 @@ package DemoQASite.Test.BookStoreTest;
 import DemoQASite.Base.BaseTest;
 import DemoQASite.Page.BookStorePages.BookStorePage;
 import DemoQASite.Page.BookStorePages.LoginPage;
-import DemoQASite.Page.HomePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ByIdOrName;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -28,7 +25,6 @@ public class BookStorePageTest extends BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(bookStoreUrl);
-        homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
         bookStorePage = new BookStorePage(driver);
 

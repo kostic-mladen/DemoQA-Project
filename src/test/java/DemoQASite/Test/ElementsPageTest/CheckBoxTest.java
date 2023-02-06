@@ -24,7 +24,6 @@ public class CheckBoxTest extends BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(checkBoxUrl);
-        homePage = new HomePage(driver);
         checkBoxPage = new CheckBoxPage(driver);
     }
 

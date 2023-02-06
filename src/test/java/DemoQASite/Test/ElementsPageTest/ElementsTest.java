@@ -3,7 +3,6 @@ package DemoQASite.Test.ElementsPageTest;
 import DemoQASite.Base.BaseTest;
 import DemoQASite.Page.ElemnetsPages.BrokenImagePage;
 import DemoQASite.Page.ElemnetsPages.ElementsPage;
-import DemoQASite.Page.HomePage;
 import DemoQASite.Page.ElemnetsPages.TextBoxPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -26,7 +25,6 @@ public class ElementsTest extends BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(elementsUrl);
-        homePage = new HomePage(driver);
         elementsPage = new ElementsPage(driver);
         textBoxPage = new TextBoxPage(driver);
         brokenImagePage = new BrokenImagePage(driver);

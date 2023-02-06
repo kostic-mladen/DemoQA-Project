@@ -27,9 +27,6 @@ public class ProfileTest extends BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(profileUrl);
-        homePage = new HomePage(driver);
-        loginPage = new LoginPage(driver);
-        bookStorePage = new BookStorePage(driver);
         profilePage = new ProfilePage(driver);
     }
 

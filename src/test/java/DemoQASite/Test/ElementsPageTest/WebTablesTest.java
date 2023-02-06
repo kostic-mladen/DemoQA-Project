@@ -1,7 +1,6 @@
 package DemoQASite.Test.ElementsPageTest;
 
 import DemoQASite.Base.BaseTest;
-import DemoQASite.Page.ElemnetsPages.BrokenImagePage;
 import DemoQASite.Page.ElemnetsPages.WebTablesPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
