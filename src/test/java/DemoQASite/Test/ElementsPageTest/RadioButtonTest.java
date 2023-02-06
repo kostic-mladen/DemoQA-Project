@@ -81,7 +81,6 @@ public class RadioButtonTest extends BaseTest {
     @Test(priority = 80)
     public void verifyThatNoButtonIsVisible() {
         Assert.assertTrue(isDisplayed(radioButtonPage.noButton));
-        ;
         Assert.assertTrue(isDisplayed(radioButtonPage.yesButton));
         Assert.assertTrue(isDisplayed(radioButtonPage.impressiveButton));
     }
