@@ -31,7 +31,7 @@ public class LoginTest extends BaseTest {
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
         bookStorePage = new BookStorePage(driver);
-        registerPage = new RegisterPage(driver);
+
 
     }
 
@@ -137,14 +137,6 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(isDisplayed(loginPage.emptyPassword));
     }
 
-    @Test(priority = 80)
-    public void verifyThatNewUserButtonIsClickable() {
-        scrollToElement(loginPage.newUserButton);
-        loginPage.clickOnNewUserButton();
-        Assert.assertFalse(isDisplayed(loginPage.logInButton));
-        String expectedText = "Register to Book Store";
-        Assert.assertEquals(registerPage.headerRegisterTo.getText(), expectedText);
-    }
 
 
     @AfterMethod

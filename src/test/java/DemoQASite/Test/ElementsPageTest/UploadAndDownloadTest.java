@@ -10,6 +10,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.time.Duration;
 
 public class UploadAndDownloadTest extends BaseTest {
@@ -45,7 +46,8 @@ public class UploadAndDownloadTest extends BaseTest {
         uploadAndDownloadPage.uploadFile();
         waitForVisibility(uploadAndDownloadPage.messageAfterUpload);
         uploadAndDownloadPage.clickOnDownloadButton();
-        Thread.sleep(5000);
+        File image = new File("C:\\Users\\Administrator\\Downloads\\sampleFile.jpeg");
+        Assert.assertTrue(image.exists());
 
     }
 

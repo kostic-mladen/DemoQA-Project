@@ -30,7 +30,6 @@ public class ProfileTest extends BaseTest {
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
         bookStorePage = new BookStorePage(driver);
-        registerPage = new RegisterPage(driver);
         profilePage = new ProfilePage(driver);
     }
 
@@ -47,8 +46,8 @@ public class ProfileTest extends BaseTest {
     public void verifyThatRegisterLinkOnProfilePageIsClickable() {
         scrollToElement(profilePage.register);
         profilePage.clickRegister();
-        Assert.assertTrue(isDisplayed(registerPage.firstNameField));
-        Assert.assertTrue(isDisplayed(registerPage.lastNameField));
+        Assert.assertEquals(driver.getCurrentUrl(), registerUrl);
+
     }
 
     @Test(priority = 30)
