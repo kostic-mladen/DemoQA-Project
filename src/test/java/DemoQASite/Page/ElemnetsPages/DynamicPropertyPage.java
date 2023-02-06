@@ -32,5 +32,7 @@ public class DynamicPropertyPage extends BaseTest {
     @FindBy(xpath = "//span[contains(text(),'© 2013-2020 TOOLSQA.COM | ALL RIGHTS RESERVED.')]")
     public WebElement footerDynamicPage;
 
+    @FindBy(id = "visibleAfter")
+    public WebElement visibleAfterButton;
 
 }

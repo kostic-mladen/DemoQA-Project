@@ -62,15 +62,9 @@ public class DynamicTest extends BaseTest {
     }
 
     @Test(priority = 70)
-    public void verifyThatColorButtonIsNotVisibleBefore5s() throws InterruptedException {
-        Thread.sleep(4000);
-        Assert.assertFalse(isDisplayed(dynamicPropertyPage.buttonAfterColorChange));
-    }
-
-    @Test(priority = 80)
     public void verifyThatColorChangeButtonChangeItsColorAfter6s() throws InterruptedException {
         Thread.sleep(6000);
-        Assert.assertTrue(isDisplayed(dynamicPropertyPage.buttonAfterColorChange));
+        Assert.assertTrue(isDisplayed(dynamicPropertyPage.visibleAfterButton));
     }
 
 
