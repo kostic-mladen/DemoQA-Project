@@ -95,7 +95,7 @@ public class LinksTest extends BaseTest {
         waitForVisibility(linksPage.created);
         scrollToElement(linksPage.created);
         linksPage.clickOnCreated();
-        String expectedText = "Link has responded with staus 201 and status text Created";
+        String expectedText = "Link has responded with status 201 and status text Created";
         waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
@@ -106,7 +106,7 @@ public class LinksTest extends BaseTest {
         waitForVisibility(linksPage.noContent);
         scrollToElement(linksPage.noContent);
         linksPage.clickOnNoContent();
-        String expectedText = "Link has responded with staus 204 and status text No Content";
+        String expectedText = "Link has responded with status 204 and status text No Content";
         waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
@@ -116,7 +116,7 @@ public class LinksTest extends BaseTest {
     public void verifyThatMovedButtonIsClickable() {
         scrollToElement(linksPage.moved);
         linksPage.clickOnMoved();
-        String expectedText = "Link has responded with staus 301 and status text Moved Permanently";
+        String expectedText = "Link has responded with status 301 and status text Moved Permanently";
         waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
@@ -126,7 +126,7 @@ public class LinksTest extends BaseTest {
     public void verifyThatBadRequestButtonIsClickable() {
         scrollToElement(linksPage.badRequest);
         linksPage.clickOnBadRequest();
-        String expectedText = "Link has responded with staus 400 and status text Bad Request";
+        String expectedText = "Link has responded with status 400 and status text Bad Request";
         waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
@@ -137,7 +137,7 @@ public class LinksTest extends BaseTest {
         waitForVisibility(linksPage.unauthorized);
         scrollToElement(linksPage.unauthorized);
         linksPage.clickOnUnAuthorize();
-        String expectedText = "Link has responded with staus 401 and status text Unauthorized";
+        String expectedText = "Link has responded with status 401 and status text Unauthorized";
         waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
@@ -148,7 +148,7 @@ public class LinksTest extends BaseTest {
         waitForVisibility(linksPage.forbidden);
         scrollToElement(linksPage.forbidden);
         linksPage.clickOnForbidden();
-        String expectedText = "Link has responded with staus 403 and status text Forbidden";
+        String expectedText = "Link has responded with status 403 and status text Forbidden";
         waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);
@@ -159,7 +159,7 @@ public class LinksTest extends BaseTest {
         waitForVisibility(linksPage.invalidUrl);
         scrollToElement(linksPage.invalidUrl);
         linksPage.clickOnInvalidUrl();
-        String expectedText = "Link has responded with staus 404 and status text Not Found";
+        String expectedText = "Link has responded with status 404 and status text Not Found";
         waitForVisibility(linksPage.linkResponse);
         scrollToElement(linksPage.linkResponse);
         Assert.assertEquals(linksPage.linkResponse.getText(), expectedText);

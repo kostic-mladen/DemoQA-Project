@@ -3,7 +3,6 @@ package DemoQASite.Test.BookStoreTest;
 import DemoQASite.Base.BaseTest;
 import DemoQASite.Page.BookStorePages.BookStorePage;
 import DemoQASite.Page.BookStorePages.LoginPage;
-import DemoQASite.Page.BookStorePages.RegisterPage;
 import DemoQASite.Page.HomePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;

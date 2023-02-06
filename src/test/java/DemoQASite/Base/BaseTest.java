@@ -4,7 +4,6 @@ import DemoQASite.Page.*;
 import DemoQASite.Page.BookStorePages.BookStorePage;
 import DemoQASite.Page.BookStorePages.LoginPage;
 import DemoQASite.Page.BookStorePages.ProfilePage;
-import DemoQASite.Page.BookStorePages.RegisterPage;
 import DemoQASite.Page.ElemnetsPages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
@@ -38,7 +37,7 @@ public class BaseTest {
     public DynamicPropertyPage dynamicPropertyPage;
     public BookStorePage bookStorePage;
     public LoginPage loginPage;
-    public RegisterPage registerPage;
+
     public ProfilePage profilePage;
 
     public LinksPage linksPage;
