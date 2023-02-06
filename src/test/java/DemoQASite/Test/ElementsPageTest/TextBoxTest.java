@@ -21,7 +21,7 @@ public class TextBoxTest extends BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-       // driver = new ChromeDriver();
+        // driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(textBoxUrl);
@@ -38,7 +38,7 @@ public class TextBoxTest extends BaseTest {
     }
 
     @Test(priority = 20)
-    public void verifyTextBoxFormWithValidInputs(){
+    public void verifyTextBoxFormWithValidInputs() {
         waitForVisibility(textBoxPage.fullNameField);
         textBoxPage.insertFullName("Mladen Kostic");
         textBoxPage.insertEmail("mladja995@gmail.com");
@@ -52,13 +52,48 @@ public class TextBoxTest extends BaseTest {
         Assert.assertTrue(isDisplayed(textBoxPage.outputBox));
     }
 
+    @Test(priority = 30)
+    public void verifyThatUserCanNotEnterNumericCredentialsInFullNameField() throws InterruptedException {
+        textBoxPage.insertNumericFullName(565446);
+        scrollToElement(textBoxPage.submitButton);
+        textBoxPage.clickOnSubmitButton();
+        String expectedtext = "Error: Full name can not be numeric.";
+        Assert.assertEquals(textBoxPage.outputName.getText(), expectedtext);
 
 
-
-
-    @AfterMethod
-    public void closeTextBoxBrowserDown() {
-        driver.manage().deleteAllCookies();
-        driver.quit();
     }
-}
+
+    @Test(priority = 40)
+    public void verifyThatUserCanNotEnterSpecialCharCredentialsInFullNameField() throws InterruptedException {
+        textBoxPage.insertFullName("($()==#=(");
+        scrollToElement(textBoxPage.submitButton);
+        textBoxPage.clickOnSubmitButton();
+        String expectedtext = "Error: Full name can only contain alphabet letters.";
+        Assert.assertEquals(textBoxPage.outputName.getText(), expectedtext);
+
+    }
+
+
+    @Test(priority = 60)
+    public void verifyThatUserCanNotEnterInvalidEmailFormInEmailField() {
+        textBoxPage.emailField.sendKeys("mladja995@gmailcom");
+        scrollToElement(textBoxPage.submitButton);
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertTrue(isDisplayed(textBoxPage.errorEmailForm));
+    }
+
+    @Test(priority = 70)
+    public void verifyThatOutputMessageInPermanentAddressIsValid() {  //typo bug, expectedResult: Permanent; ActualResult:Permananet
+        String expectedText = "Permanent Address:Prote Mateje 19, Pirot";
+        textBoxPage.insertPermanentAddress("Prote Mateje 19, Pirot");
+        scrollToElement(textBoxPage.submitButton);
+        textBoxPage.clickOnSubmitButton();
+        Assert.assertEquals(textBoxPage.outPutMessage.getText(), expectedText);
+
+    }
+        @AfterMethod
+        public void closeTextBoxBrowserDown () {
+            driver.manage().deleteAllCookies();
+            driver.quit();
+        }
+    }

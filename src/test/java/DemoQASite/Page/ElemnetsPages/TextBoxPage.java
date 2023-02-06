@@ -35,6 +35,15 @@ public class TextBoxPage extends BaseTest {
     @FindBy(id = "name")
     public WebElement outputName;
 
+    @FindBy(css = ".mr-sm-2.field-error.form-control")
+    public WebElement errorEmailForm;
+
+    @FindBy(id = "permanentAddress")
+    public WebElement permanentAddressText;
+
+    @FindBy(id = "output")
+    public WebElement outPutMessage;
+
     public void insertFullName(String fullname){
         fullNameField.sendKeys(fullname);
     }
@@ -52,7 +61,7 @@ public class TextBoxPage extends BaseTest {
         submitButton.click();
     }
 
-    public void insertNumericFullName(String fullName){
+    public void insertNumericFullName(int fullName){
         fullNameField.sendKeys(String.valueOf(fullName));
     }
 
