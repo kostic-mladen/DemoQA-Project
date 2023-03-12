@@ -16,10 +16,11 @@ public class WebTablesTest extends BaseTest {
 
 
     @BeforeMethod
-    public void brokenImagePageSetUp() {
+    public void webTablesPageSetUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        options.addArguments("--remote-allow-origins=*");
         //driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();

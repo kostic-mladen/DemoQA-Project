@@ -19,6 +19,7 @@ public class CheckBoxTest extends BaseTest {
     public void checkBoxPageSetUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
+        options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         //driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));

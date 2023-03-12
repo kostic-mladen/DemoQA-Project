@@ -21,7 +21,8 @@ public class LoginTest extends BaseTest {
     @BeforeMethod
     public void loginPageSetUp() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+      //  options.addArguments("--headless");
+        options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
 
         //driver = new ChromeDriver();
