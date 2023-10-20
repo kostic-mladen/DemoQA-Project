@@ -20,7 +20,7 @@ ChromeDriver: Download the ChromeDriver executable compatible with your Chrome b
 Running the Tests
 
 1. Clone the Repository: Clone this repository to your local machine using the following command:
-git clone https://github.com/your-username/demoqa-selenium-tests.git
+git clone https://github.com/kostic-mladen/DemoQA-Project.git
 
 2. Open the Project in IDE: Open the cloned project in your preferred IDE (Eclipse or IntelliJ).
 
