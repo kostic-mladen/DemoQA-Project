@@ -11,6 +11,8 @@ import java.util.List;
 public class CheckBoxPage extends BaseTest {
 
     public CheckBoxPage(WebDriver driver){
+
+
         PageFactory.initElements(driver, this);
     }
     @FindBy(className = "left-pannel")

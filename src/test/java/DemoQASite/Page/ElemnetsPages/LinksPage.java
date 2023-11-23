@@ -9,6 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 public class LinksPage extends BaseTest {
 
     public LinksPage(WebDriver driver) {
+
+
         PageFactory.initElements(driver, this);
     }
 

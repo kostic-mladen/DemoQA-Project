@@ -12,6 +12,8 @@ import java.util.List;
 public class RadioButtonPage extends BaseTest {
 
     public RadioButtonPage(WebDriver driver) {
+
+
         PageFactory.initElements(driver, this);
     }
 

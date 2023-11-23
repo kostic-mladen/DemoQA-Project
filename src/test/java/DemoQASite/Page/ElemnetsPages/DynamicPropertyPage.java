@@ -11,6 +11,8 @@ import java.util.List;
 public class DynamicPropertyPage extends BaseTest {
 
     public DynamicPropertyPage(WebDriver driver) {
+
+
         PageFactory.initElements(driver, this);
     }
 

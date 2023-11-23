@@ -24,7 +24,6 @@ public class HomePageTest extends BaseTest {
         options.addArguments("--headless");
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
-       // driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(homeUrl);
@@ -41,7 +40,7 @@ public class HomePageTest extends BaseTest {
     public void verifyThatAllButtonsOnHomePageAreClickable() throws InterruptedException {
         for (int i = 0; i < homePage.listOfElements.size(); i++) {
             scrollToElement(homePage.listOfElements.get(i));
-            waitForClickability(homePage.listOfElements.get(i));
+            waitForApplicability(homePage.listOfElements.get(i));
             homePage.listOfElements.get(i).click();
             Assert.assertNotEquals(driver.getCurrentUrl(), homeUrl);
             driver.navigate().back();

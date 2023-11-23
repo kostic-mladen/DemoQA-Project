@@ -5,6 +5,7 @@ import DemoQASite.Page.BookStorePages.BookStorePage;
 import DemoQASite.Page.BookStorePages.LoginPage;
 import DemoQASite.Page.BookStorePages.ProfilePage;
 import DemoQASite.Page.HomePage;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,11 +21,9 @@ public class ProfileTest extends BaseTest {
     @BeforeMethod
     public void loginProfileSetUp() {
         ChromeOptions options = new ChromeOptions();
-       // options.addArguments("--headless");
+        options.addArguments("--headless");
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
-
-        //driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(profileUrl);

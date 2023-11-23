@@ -9,6 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 public class ElementsPage extends BaseTest {
 
     public ElementsPage(WebDriver driver){
+
+
         PageFactory.initElements(driver, this);
     }
 

@@ -10,9 +10,7 @@ import java.util.List;
 
 public class HomePage extends BaseTest {
 
-    public HomePage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
+
 
     @FindBy(className = "card-body")
     public List<WebElement> listOfElements;
@@ -28,6 +26,10 @@ public class HomePage extends BaseTest {
 
     @FindBy(xpath = "//span[contains(text(),'© 2013-2020 TOOLSQA.COM | ALL RIGHTS RESERVED.')]")
     public WebElement footerOnHomePage;
+
+    public HomePage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
 
     public void clickOnBannerImage() {
         bannerImage.click();

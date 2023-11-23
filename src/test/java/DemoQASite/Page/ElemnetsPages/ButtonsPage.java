@@ -13,6 +13,7 @@ import java.util.List;
 public class ButtonsPage extends BaseTest {
 
     public ButtonsPage(WebDriver driver) {
+
         PageFactory.initElements(driver, this);
     }
 

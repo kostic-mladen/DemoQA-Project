@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class BrokenImagePage {
 
     public BrokenImagePage(WebDriver driver) {
+
         PageFactory.initElements(driver, this);
     }
 

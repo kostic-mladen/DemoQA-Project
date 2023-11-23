@@ -5,10 +5,10 @@ import DemoQASite.Page.BookStorePages.BookStorePage;
 import DemoQASite.Page.BookStorePages.LoginPage;
 import DemoQASite.Page.BookStorePages.ProfilePage;
 import DemoQASite.Page.ElemnetsPages.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -58,9 +58,9 @@ public class BaseTest {
     public String profileUrl;
     public String registerUrl;
 
+
     @BeforeClass
     public void setUp() throws IOException {
-        WebDriverManager.chromedriver().setup();
         excelReader = new ExcelReader("src/test/java/DemoQASite/TestData.xlsx");
         homeUrl = excelReader.getStringData("HomePage", 1, 0);
         elementsUrl = excelReader.getStringData("Elements", 1, 0);
@@ -84,7 +84,7 @@ public class BaseTest {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void waitForClickability(WebElement element) {
+    public void waitForApplicability(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 

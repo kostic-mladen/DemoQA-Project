@@ -9,6 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 public class TextBoxPage extends BaseTest {
 
     public TextBoxPage(WebDriver driver) {
+
+
         PageFactory.initElements(driver, this);
     }
 
